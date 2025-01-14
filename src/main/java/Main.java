@@ -1,7 +1,9 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -11,9 +13,8 @@ public class Main {
     }
 }
 class RoosterFrame extends JFrame {
-    private static final int GRID_SIZE = 10;
+    private static final int GRID_SIZE = 24;
     private JButton[][] buttons;
-
     public RoosterFrame() {
         setTitle("Game Of Lide");
         setLayout(new BorderLayout());
@@ -129,6 +130,21 @@ class RoosterFrame extends JFrame {
             }
         });
         settingsPanel.add(exitButton);
+        JButton importButton = new JButton("Import");
+        importButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO Make the import Logic
+                System.out.println("Import");
+            }
+        });
+        settingsPanel.add(importButton);
+
+        JButton exportButton = new JButton("Export");
+        exportButton.addActionListener(e ->
+                ExportToJson.exportToJSON(buttons, GRID_SIZE, "grid.json"));
+
+        settingsPanel.add(exportButton);
         settingsPanel.setPreferredSize(new Dimension(150, getHeight()));
         pack();
         setLocationRelativeTo(null);
