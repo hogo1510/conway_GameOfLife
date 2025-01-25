@@ -11,14 +11,12 @@ public class ImportFromSaved {
 
     public static void importFromJSON(JButton[][] buttons, int gridSize, String fileName) {
         try {
-            // Lees de JSON-inhoud uit het bestand
             String content = new String(Files.readAllBytes(Paths.get(fileName)));
 
             // Parse de JSON-data
             JSONObject gridObject = new JSONObject(content);
             JSONArray gridArray = gridObject.getJSONArray("grid");
 
-            // Pas de kleuren van de knoppen aan op basis van de JSON
             for (int i = 0; i < gridSize; i++) {
                 JSONArray rowArray = gridArray.getJSONArray(i);
                 for (int j = 0; j < gridSize; j++) {
