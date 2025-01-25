@@ -1,7 +1,6 @@
 # Conway's Game Of Life Made in Java with Swing
 
-![image](https://github.com/user-attachments/assets/7555d972-8787-4eea-9d43-78facf434015)
+![image](https://github.com/user-attachments/assets/24c88dd2-915f-4d08-9ac0-0c2032065cd2)
 
 ### TODO:
-#### - Import & Export function
 #### - Unlimited Space
