@@ -1,6 +1,5 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileWriter;
@@ -27,7 +26,6 @@ public class ExportToJson {
         gridObject.put("grid", gridArray);
 
         try (FileWriter file = new FileWriter(fileName)) {
-            //TODO: eigen input voor naam
             file.write(gridObject.toString(4)); //met 4 spaties voor leesbaarheid
             System.out.println("Rooster succesvol geëxporteerd naar " + fileName);
         } catch (IOException e) {
