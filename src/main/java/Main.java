@@ -1,7 +1,9 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -11,9 +13,8 @@ public class Main {
     }
 }
 class RoosterFrame extends JFrame {
-    private static final int GRID_SIZE = 10;
+    private static final int GRID_SIZE = 24;
     private JButton[][] buttons;
-
     public RoosterFrame() {
         setTitle("Game Of Lide");
         setLayout(new BorderLayout());
@@ -129,6 +130,50 @@ class RoosterFrame extends JFrame {
             }
         });
         settingsPanel.add(exitButton);
+        JButton importButton = new JButton("Import");
+        importButton.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Selecteer een JSON-bestand");
+
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON-bestanden", "json"));
+
+            int result = fileChooser.showOpenDialog(this);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+                ImportFromSaved.importFromJSON(buttons, GRID_SIZE, fileName);
+            } else {
+                System.out.println("Importeren geannuleerd.");
+            }
+        });
+        settingsPanel.add(importButton);
+
+        JButton exportButton = new JButton("Export");
+        exportButton.addActionListener(e -> {
+            JTextField textField = new JTextField(10);
+
+            Object[] message = {
+                    "Voer bestands naam in:", textField
+            };
+
+            int option = JOptionPane.showConfirmDialog(
+                    null,
+                    message,
+                    "Invoer",
+                    JOptionPane.OK_CANCEL_OPTION
+            );
+
+            if (option == JOptionPane.OK_OPTION) {
+                String input = textField.getText(); // Haal tekst uit het veld
+                System.out.println("Ingevoerde tekst: " + input);
+
+                ExportToJson.exportToJSON(buttons, GRID_SIZE, input + ".json");
+            } else {
+                System.out.println("Actie geannuleerd.");
+            }
+        });
+
+        settingsPanel.add(exportButton);
         settingsPanel.setPreferredSize(new Dimension(150, getHeight()));
         pack();
         setLocationRelativeTo(null);
