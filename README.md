@@ -6,10 +6,10 @@ Made in Java with swing for UI.
 #### First version now use able; v=1.0.0
 .
 ### How To Use:
-#### Gnu/Linux:
-#### - download the jar
-#### - check java version: java -version (has to be openjdk 21
-#### - java -jar conway_GameOfLife.jar
+#### GNU/Linux:
+#### - Download the jar
+#### - Check Java version: ``` java -version ``` (has to be openjdk 21)
+#### - Start: ``` java -jar conway_GameOfLife.jar ```
 
 ### TODO:
 #### - Unlimited Space
